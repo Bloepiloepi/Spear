@@ -1,6 +1,6 @@
-package bloepiloepi.github.io.spear.exceptions;
+package io.github.bloepiloepi.spear.exceptions;
 
-import bloepiloepi.github.io.spear.parser.SPToken;
+import io.github.bloepiloepi.spear.parser.SPToken;
 
 public class UnexpectedTokenException extends Exception {
 	

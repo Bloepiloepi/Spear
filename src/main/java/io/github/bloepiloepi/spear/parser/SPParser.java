@@ -1,9 +1,8 @@
-package bloepiloepi.github.io.spear.parser;
+package io.github.bloepiloepi.spear.parser;
 
-import bloepiloepi.github.io.spear.exceptions.InvalidCharacterException;
-import bloepiloepi.github.io.spear.exceptions.UnexpectedTokenException;
-import bloepiloepi.github.io.spear.objects.*;
-import gq.mineville.spear.objects.*;
+import io.github.bloepiloepi.spear.exceptions.InvalidCharacterException;
+import io.github.bloepiloepi.spear.exceptions.UnexpectedTokenException;
+import io.github.bloepiloepi.spear.objects.*;
 
 import java.util.ArrayList;
 

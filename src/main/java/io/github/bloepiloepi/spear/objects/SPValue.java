@@ -1,4 +1,4 @@
-package bloepiloepi.github.io.spear.objects;
+package io.github.bloepiloepi.spear.objects;
 
 import java.util.ArrayList;
 import java.util.Iterator;

@@ -1,4 +1,4 @@
-package bloepiloepi.github.io.spear.validation;
+package io.github.bloepiloepi.spear.validation;
 
 public class Validation {
 	

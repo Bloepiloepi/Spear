@@ -1,10 +1,9 @@
-package bloepiloepi.github.io.spear.objects;
+package io.github.bloepiloepi.spear.objects;
 
-import bloepiloepi.github.io.spear.exceptions.*;
-import bloepiloepi.github.io.spear.parser.SPParser;
-import gq.mineville.spear.exceptions.*;
-import bloepiloepi.github.io.spear.validation.SPPath;
-import bloepiloepi.github.io.spear.validation.Validation;
+import io.github.bloepiloepi.spear.exceptions.*;
+import io.github.bloepiloepi.spear.parser.SPParser;
+import io.github.bloepiloepi.spear.validation.SPPath;
+import io.github.bloepiloepi.spear.validation.Validation;
 
 import java.io.File;
 import java.io.FileNotFoundException;

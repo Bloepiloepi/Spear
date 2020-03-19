@@ -1,4 +1,4 @@
-package bloepiloepi.github.io.spear.exceptions;
+package io.github.bloepiloepi.spear.exceptions;
 
 public class UnsupportedTypeException extends RuntimeException {
 	

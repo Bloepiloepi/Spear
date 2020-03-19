@@ -1,8 +1,8 @@
-package bloepiloepi.github.io.spear.objects;
+package io.github.bloepiloepi.spear.objects;
 
-import bloepiloepi.github.io.spear.exceptions.UnsupportedKeyException;
-import bloepiloepi.github.io.spear.exceptions.UnsupportedTypeException;
-import bloepiloepi.github.io.spear.validation.SPPath;
+import io.github.bloepiloepi.spear.exceptions.UnsupportedKeyException;
+import io.github.bloepiloepi.spear.exceptions.UnsupportedTypeException;
+import io.github.bloepiloepi.spear.validation.SPPath;
 
 import java.util.ArrayList;
 import java.util.HashMap;

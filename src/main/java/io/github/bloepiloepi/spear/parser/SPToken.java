@@ -1,4 +1,4 @@
-package bloepiloepi.github.io.spear.parser;
+package io.github.bloepiloepi.spear.parser;
 
 public class SPToken {
 	

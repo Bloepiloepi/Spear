@@ -1,6 +1,6 @@
-package bloepiloepi.github.io.spear.parser;
+package io.github.bloepiloepi.spear.parser;
 
-import bloepiloepi.github.io.spear.exceptions.InvalidCharacterException;
+import io.github.bloepiloepi.spear.exceptions.InvalidCharacterException;
 
 public class SPLexer {
 	

@@ -1,6 +1,6 @@
-package bloepiloepi.github.io.spear.validation;
+package io.github.bloepiloepi.spear.validation;
 
-import bloepiloepi.github.io.spear.exceptions.InvalidPathException;
+import io.github.bloepiloepi.spear.exceptions.InvalidPathException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
