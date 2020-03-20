@@ -15,7 +15,10 @@
     </properties>
 
     <distributionManagement>
-
+        <repository>
+            <id>apache.snapshots.https</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
     </distributionManagement>
 
     <issueManagement>
