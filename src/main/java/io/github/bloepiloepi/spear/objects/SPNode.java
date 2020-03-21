@@ -130,7 +130,7 @@ public class SPNode extends SPNodeValue {
 		return checkUnused();
 	}
 	
-	private ArrayList<SPValue> formatList(ArrayList<Object> value) throws UnsupportedTypeException {
+	private ArrayList<SPValue> formatList(ArrayList<Object> value) {
 		ArrayList<SPValue> values = new ArrayList<>();
 		for (Object object : value) {
 			if (object instanceof Integer || object instanceof Double || object instanceof String || object instanceof Boolean) {

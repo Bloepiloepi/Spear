@@ -15,7 +15,7 @@ public class SPParser {
 		this.lexer = new SPLexer(text);
 	}
 	
-	private void eat(SPTokenType tokenType) throws InvalidCharacterException, UnexpectedTokenException {
+	private void eat(SPTokenType tokenType) {
 		if (currentToken.getTokenType() == tokenType) {
 			currentToken = lexer.nextToken();
 		} else {
@@ -23,7 +23,7 @@ public class SPParser {
 		}
 	}
 	
-	private SPValue list() throws InvalidCharacterException, UnexpectedTokenException {
+	private SPValue list() {
 		eat(SPTokenType.BRACKET_SQUARE_OPEN);
 		
 		if (currentToken.getTokenType() == SPTokenType.IDENTIFIER) {
@@ -55,7 +55,7 @@ public class SPParser {
 		}
 	}
 	
-	private SPValue value() throws InvalidCharacterException, UnexpectedTokenException {
+	private SPValue value() {
 		if (currentToken.getTokenType() == SPTokenType.INTEGER) {
 			int value = Integer.parseInt(currentToken.getValue());
 			eat(SPTokenType.INTEGER);
@@ -81,14 +81,14 @@ public class SPParser {
 		}
 	}
 	
-	private SPAssignment assignment() throws InvalidCharacterException, UnexpectedTokenException {
+	private SPAssignment assignment() {
 		String name = currentToken.getValue();
 		eat(SPTokenType.IDENTIFIER);
 		eat(SPTokenType.EQUALS);
 		return new SPAssignment(name, value());
 	}
 	
-	private ArrayList<SPNodeValue> nodeList() throws InvalidCharacterException, UnexpectedTokenException {
+	private ArrayList<SPNodeValue> nodeList() {
 		eat(SPTokenType.BRACKET_ROUND_OPEN);
 		
 		ArrayList<SPNodeValue> nodeList = new ArrayList<>();
@@ -103,7 +103,7 @@ public class SPParser {
 		return nodeList;
 	}
 	
-	private SPNode node() throws InvalidCharacterException, UnexpectedTokenException {
+	private SPNode node() {
 		String name = currentToken.getValue();
 		eat(SPTokenType.IDENTIFIER);
 		eat(SPTokenType.COLON);
@@ -117,7 +117,7 @@ public class SPParser {
 		return new SPNode(name, subNodes);
 	}
 	
-	private SPNodeValue object() throws InvalidCharacterException, UnexpectedTokenException {
+	private SPNodeValue object() {
 		SPToken peekToken = lexer.peekToken();
 		if (peekToken.getTokenType() == SPTokenType.COLON) {
 			return node();
@@ -126,7 +126,7 @@ public class SPParser {
 		}
 	}
 	
-	public SPData parse() throws InvalidCharacterException, UnexpectedTokenException {
+	public SPData parse() {
 		currentToken = lexer.nextToken();
 		
 		ArrayList<SPNodeValue> nodes = new ArrayList<>();

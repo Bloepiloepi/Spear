@@ -20,6 +20,7 @@ public class SPValue extends SPObject {
 		return "SPValue{" + value + "}";
 	}
 	
+	@SuppressWarnings({"rawtypes", "unchecked"})
 	@Override
 	String build() {
 		if (value instanceof ArrayList) {

@@ -51,10 +51,6 @@ public class SPLexer {
 		}
 	}
 	
-	private Character getPreviousChar() {
-		return text.charAt(pos - 1);
-	}
-	
 	private SPToken identifier() {
 		StringBuilder result = new StringBuilder();
 		while (currentChar != null && (Character.isAlphabetic(currentChar) || Character.isDigit(currentChar) || currentChar == '_')) {
@@ -89,7 +85,7 @@ public class SPLexer {
 		return new SPToken(SPTokenType.STRING, result.toString());
 	}
 	
-	public SPToken nextToken() throws InvalidCharacterException {
+	public SPToken nextToken() {
 		while (this.currentChar != null) {
 			
 			if (Character.isWhitespace(currentChar)) {
@@ -127,7 +123,7 @@ public class SPLexer {
 		return new SPToken(SPTokenType.EOF, "");
 	}
 	
-	public SPToken peekToken() throws InvalidCharacterException {
+	public SPToken peekToken() {
 		int posBefore = pos;
 		
 		while (this.currentChar != null) {

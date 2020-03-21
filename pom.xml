@@ -4,7 +4,7 @@
 
     <groupId>io.github.bloepiloepi</groupId>
     <artifactId>Spear</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.1.0</version>
 
     <name>Spear</name>
     <description>Spear is a data saving format, written in Java.</description>
@@ -15,9 +15,13 @@
     </properties>
 
     <distributionManagement>
-        <repository>
+        <snapshotRepository>
             <id>apache.snapshots.https</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>apache.releases.https</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
     </distributionManagement>
 
@@ -36,12 +40,8 @@
 
     <scm>
         <url>https://github.com/Bloepiloepi/Spear</url>
-        <connection>
-            scm:git:git://github.com/Bloepiloepi/Spear.git
-        </connection>
-        <developerConnection>
-            scm:git:ssh://git@github.com:Bloepiloepi/Spear.git
-        </developerConnection>
+        <connection>scm:git:git://github.com/Bloepiloepi/Spear.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com:Bloepiloepi/Spear.git</developerConnection>
     </scm>
 
     <developers>

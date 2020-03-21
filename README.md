@@ -75,23 +75,26 @@ So the key can only be a String. If otherwise, an UnsupportedKeyException will b
 
 The paths work the same as in YAML, so if you want to set for example `wow` to false (in the sample file), you use the path `this.is.a.test.test.wow`.
 
-Getting values from the file is a little bit tricky. This is because there are no methods like `getInteger()` or `getBoolean()`.
-If you want to get a Boolean:
+Getting values from the file:
 ```java
-Boolean bool = (Boolean) data.get("path.to.boolean");
+data.getInteger(path);
+data.getDouble(path);
+data.getString(path);
+data.getBoolean(path);
+data.getList(path);
+data.getKeyBasedList(path);
 ```
-This will unfortunately give you an unchecked warning, sorry.  
-When retrieving lists, it is even more tricky:
+These methods return `null` when the path does not exist, or the result is not of the type you asked for.  
+When retrieving lists, it is a little more tricky:
 ```java
-ArrayList<Object> list = (ArrayList<Object>) data.get("path.to.list.which.is.not.key.based");
-HashMap<Object, Object> list2 = (HashMap<Object, Object>) data.get("path.to.list.which.is.key.based");
+ArrayList<Object> list = data.getList("path.to.list.which.is.not.key.based");
+HashMap<String, Object> list2 = data.getKeyBasedList("path.to.list.which.is.key.based");
 ```
 Yes indeed, in Spear, it's not sure what the type of a list is. So you can have a list like this:
 ```
 [key1="item1",key2="item2",key3="item3",key4=true]
 ```
-That is not so nice in Java, I know. But Spear has it's own way of doing things.
-It's not made to be compatible with Java, and maybe in future there will be a version for other programming languages.
+But if you store a HashMap, the key must always be a string. This is because Spear works with identifiers as key.
 
 Now, you're done reading this. Go use Spear!  
 Have fun with it :-)

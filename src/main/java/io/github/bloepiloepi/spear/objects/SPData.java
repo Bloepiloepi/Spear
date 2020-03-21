@@ -113,7 +113,7 @@ public class SPData extends SPObject {
 		}
 	}
 	
-	public void remove(String path) throws InvalidPathException {
+	public void remove(String path) {
 		SPPath spPath = new SPPath(path);
 		if (spPath.isLastNode()) {
 			removeAssignment(spPath.getCurrentNode());
@@ -129,38 +129,37 @@ public class SPData extends SPObject {
 		}
 	}
 	
-	public void setInteger(String path, Integer value) throws InvalidPathException {
+	public void setInteger(String path, Integer value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
-	public void setDouble(String path, Double value) throws InvalidPathException {
+	public void setDouble(String path, Double value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
-	public void setString(String path, String value) throws InvalidPathException {
+	public void setString(String path, String value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
-	public void setBoolean(String path, Boolean value) throws InvalidPathException {
+	public void setBoolean(String path, Boolean value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
-	@Deprecated
-	public void setList(String path, ArrayList<Object> value) throws InvalidPathException {
+	public void setList(String path, ArrayList<Object> value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, formatList(value));
 	}
 	
-	public void setList(String path, HashMap<Object, Object> value) throws InvalidPathException {
+	public void setKeyBasedList(String path, HashMap<Object, Object> value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, formatList(value));
@@ -205,7 +204,7 @@ public class SPData extends SPObject {
 	}
 	
 	@SuppressWarnings({"unchecked", "rawtypes"})
-	public Object get(String path) throws InvalidPathException {
+	private Object get(String path) {
 		SPPath spPath = new SPPath(path);
 		SPValue spValue = get(spPath);
 		
@@ -239,6 +238,62 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	public Integer getInteger(String path) {
+		Object result = get(path);
+		if (result instanceof Integer) {
+			return (Integer) result;
+		} else {
+			return null;
+		}
+	}
+	
+	public Double getDouble(String path) {
+		Object result = get(path);
+		if (result instanceof Double) {
+			return (Double) result;
+		} else {
+			return null;
+		}
+	}
+	
+	public String getString(String path) {
+		Object result = get(path);
+		if (result instanceof String) {
+			return (String) result;
+		} else {
+			return null;
+		}
+	}
+	
+	public Boolean getBoolean(String path) {
+		Object result = get(path);
+		if (result instanceof Boolean) {
+			return (Boolean) result;
+		} else {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Object> getList(String path) {
+		Object result = get(path);
+		if (result instanceof ArrayList) {
+			return (ArrayList<Object>) result;
+		} else {
+			return null;
+		}
+	}
+	
+	@SuppressWarnings("unchecked")
+	public HashMap<String, Object> getKeyBasedList(String path) {
+		Object result = get(path);
+		if (result instanceof HashMap) {
+			return (HashMap<String, Object>) result;
+		} else {
+			return null;
+		}
+	}
+	
 	@Override
 	public String toString() {
 		return "SPData{}";
@@ -269,7 +324,7 @@ public class SPData extends SPObject {
 		return result.toString();
 	}
 	
-	public static SPData load(File file) throws InvalidCharacterException, UnexpectedTokenException, FileNotFoundException, IncorrectFileTypeException {
+	public static SPData load(File file) throws FileNotFoundException {
 		String[] split = file.getName().split("\\.");
 		String extension = split[split.length - 1];
 		if (extension.equals("sp")) {
@@ -282,12 +337,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
-	public static SPData loadFromString(String data) throws InvalidCharacterException, UnexpectedTokenException {
+	public static SPData loadFromString(String data) {
 		return new SPParser(data).parse();
 	}
 	
 	@SuppressWarnings("ResultOfMethodCallIgnored")
-	public void save(File file) throws IOException, IncorrectFileTypeException {
+	public void save(File file) throws IOException {
 		String[] split = file.getName().split("\\.");
 		String extension = split[split.length - 1];
 		if (extension.equals("sp")) {
