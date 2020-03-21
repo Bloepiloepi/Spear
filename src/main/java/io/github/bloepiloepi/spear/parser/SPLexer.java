@@ -2,13 +2,16 @@ package io.github.bloepiloepi.spear.parser;
 
 import io.github.bloepiloepi.spear.exceptions.InvalidCharacterException;
 
+/**
+ * The lexer of Spear.
+ */
 public class SPLexer {
 	
 	private int pos = 0;
 	private Character currentChar;
 	private String text;
 	
-	public SPLexer(String text) {
+	SPLexer(String text) {
 		this.text = text;
 		this.currentChar = text.charAt(this.pos);
 	}

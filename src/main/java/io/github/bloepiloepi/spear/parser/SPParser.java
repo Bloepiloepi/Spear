@@ -1,11 +1,13 @@
 package io.github.bloepiloepi.spear.parser;
 
-import io.github.bloepiloepi.spear.exceptions.InvalidCharacterException;
 import io.github.bloepiloepi.spear.exceptions.UnexpectedTokenException;
 import io.github.bloepiloepi.spear.objects.*;
 
 import java.util.ArrayList;
 
+/**
+ * The parser of Spear.
+ */
 public class SPParser {
 
 	private SPLexer lexer;
@@ -126,6 +128,10 @@ public class SPParser {
 		}
 	}
 	
+	/**
+	 * Starts to parse.
+	 * @return A SPData object containing all the parsed contents in a tree-form.
+	 */
 	public SPData parse() {
 		currentToken = lexer.nextToken();
 		

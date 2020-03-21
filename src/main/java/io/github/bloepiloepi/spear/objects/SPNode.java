@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
+/**
+ * Represents a node in Spear.
+ */
 public class SPNode extends SPNodeValue {
 	
 	private String name;

@@ -1,5 +1,8 @@
 package io.github.bloepiloepi.spear.objects;
 
+/**
+ * Represents an assignment in Spear.
+ */
 public class SPAssignment extends SPNodeValue {
 	
 	private String name;

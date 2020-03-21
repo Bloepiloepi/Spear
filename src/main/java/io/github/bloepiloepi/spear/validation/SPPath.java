@@ -5,6 +5,9 @@ import io.github.bloepiloepi.spear.exceptions.InvalidPathException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Represents a Spear path. Validates whether it is correct, and splits it into nodes.
+ */
 public class SPPath {
 	
 	private String path;

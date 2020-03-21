@@ -1,11 +1,14 @@
 package io.github.bloepiloepi.spear.parser;
 
+/**
+ * A token in Spear.
+ */
 public class SPToken {
 	
 	private SPTokenType tokenType;
 	private String value;
 	
-	public SPToken(SPTokenType tokenType, String value) {
+	SPToken(SPTokenType tokenType, String value) {
 		this.tokenType = tokenType;
 		this.value = value;
 	}

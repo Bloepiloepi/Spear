@@ -2,6 +2,9 @@ package io.github.bloepiloepi.spear.parser;
 
 import java.util.HashMap;
 
+/**
+ * Enum of all the token types in Spear.
+ */
 public enum SPTokenType {
 
 	IDENTIFIER(""),

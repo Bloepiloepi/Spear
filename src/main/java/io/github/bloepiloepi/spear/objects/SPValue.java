@@ -3,6 +3,9 @@ package io.github.bloepiloepi.spear.objects;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * Represents a value in Spear.
+ */
 public class SPValue extends SPObject {
 	
 	private Object value;

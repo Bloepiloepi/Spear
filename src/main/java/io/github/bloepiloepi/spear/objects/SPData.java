@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * The main Spear object. This is the object that represents a data file of Spear, in which you can remove, set and get values.
+ */
 public class SPData extends SPObject {
 	
 	private ArrayList<SPNode> separatedNodes;
@@ -113,6 +116,10 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Remove a node or assignment. This is the equivalent of setting it to null (which you can't do because Spear doesn't handle null).
+	 * @param path The path to remove
+	 */
 	public void remove(String path) {
 		SPPath spPath = new SPPath(path);
 		if (spPath.isLastNode()) {
@@ -129,36 +136,72 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Set an Integer in the file.
+	 *
+	 * @param path  The path to the new Integer
+	 * @param value The value of the new Integer
+	 */
 	public void setInteger(String path, Integer value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
+	/**
+	 * Set a Double in the file.
+	 *
+	 * @param path  The path to the new Double
+	 * @param value The value of the new Double
+	 */
 	public void setDouble(String path, Double value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
+	/**
+	 * Set a String in the file.
+	 *
+	 * @param path  The path to the new String
+	 * @param value The value of the new String
+	 */
 	public void setString(String path, String value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
+	/**
+	 * Set a Boolean in the file.
+	 *
+	 * @param path  The path to the new Boolean
+	 * @param value The value of the new Boolean
+	 */
 	public void setBoolean(String path, Boolean value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, value);
 	}
 	
+	/**
+	 * Set a List in the file.
+	 *
+	 * @param path  The path to the new List
+	 * @param value The value of the new List
+	 */
 	public void setList(String path, ArrayList<Object> value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
 		set(spPath, formatList(value));
 	}
 	
+	/**
+	 * Set a key based List (HashMap) in the file.
+	 *
+	 * @param path  The path to the new List
+	 * @param value The value of the new List
+	 */
 	public void setKeyBasedList(String path, HashMap<Object, Object> value) {
 		Validation.notNull(value, "Spear can't handle null values! Use the remove() method instead.");
 		SPPath spPath = new SPPath(path);
@@ -238,6 +281,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Get an Integer from the file.
+	 *
+	 * @param path The path to the Integer
+	 * @return     The value of the Integer if it does exist, else null.
+	 */
 	public Integer getInteger(String path) {
 		Object result = get(path);
 		if (result instanceof Integer) {
@@ -247,6 +296,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Get a Double from the file.
+	 *
+	 * @param path The path to the Double
+	 * @return     The value of the Double if it does exist, else null.
+	 */
 	public Double getDouble(String path) {
 		Object result = get(path);
 		if (result instanceof Double) {
@@ -256,6 +311,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Get a String from the file.
+	 *
+	 * @param path The path to the String
+	 * @return     The value of the String if it does exist, else null.
+	 */
 	public String getString(String path) {
 		Object result = get(path);
 		if (result instanceof String) {
@@ -265,6 +326,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Get a Boolean from the file.
+	 *
+	 * @param path The path to the Boolean
+	 * @return     The value of the Boolean if it does exist, else null.
+	 */
 	public Boolean getBoolean(String path) {
 		Object result = get(path);
 		if (result instanceof Boolean) {
@@ -274,6 +341,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Get a List from the file.
+	 *
+	 * @param path The path to the List
+	 * @return     The value of the List as an ArrayList if it does exist, else null.
+	 */
 	@SuppressWarnings("unchecked")
 	public ArrayList<Object> getList(String path) {
 		Object result = get(path);
@@ -284,6 +357,12 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Get a key based List from the file.
+	 *
+	 * @param path The path to the List
+	 * @return     The value of the List as a HashMap if it does exist, else null.
+	 */
 	@SuppressWarnings("unchecked")
 	public HashMap<String, Object> getKeyBasedList(String path) {
 		Object result = get(path);
@@ -324,6 +403,13 @@ public class SPData extends SPObject {
 		return result.toString();
 	}
 	
+	/**
+	 * Reads a file, parses it and loads it into the cache.
+	 *
+	 * @param file                   The File to read
+	 * @return                       An SPData object from the file
+	 * @throws FileNotFoundException If the file does not exist
+	 */
 	public static SPData load(File file) throws FileNotFoundException {
 		String[] split = file.getName().split("\\.");
 		String extension = split[split.length - 1];
@@ -337,10 +423,23 @@ public class SPData extends SPObject {
 		}
 	}
 	
+	/**
+	 * Loads a new SPData object from a String.
+	 *
+	 * @param data The data in Spear format
+	 * @return     A SPData object from the String
+	 */
 	public static SPData loadFromString(String data) {
 		return new SPParser(data).parse();
 	}
 	
+	/**
+	 * Builds a new Spear file from this object and saves it to a File.
+	 * This creates the file for you if it does not exist.
+	 *
+	 * @param file         The File to save to
+	 * @throws IOException If an error occurred while saving
+	 */
 	@SuppressWarnings("ResultOfMethodCallIgnored")
 	public void save(File file) throws IOException {
 		String[] split = file.getName().split("\\.");
