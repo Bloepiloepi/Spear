@@ -13,7 +13,11 @@ public class SPLexer {
 	
 	SPLexer(String text) {
 		this.text = text;
-		this.currentChar = text.charAt(this.pos);
+		if (text.length() > 0) {
+			this.currentChar = text.charAt(this.pos);
+		} else {
+			this.currentChar = null;
+		}
 	}
 	
 	private void next() {
