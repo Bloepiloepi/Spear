@@ -1,1 +1,1 @@
-(this:is:a:test:(so:can1:it23:handle111:this:(ehhh=-1238,i="dont'tknow",canyoudothis="Hello\nHi\"Quote\"()\\n"),test:wow=true,does=true,it=1,work="hopefully?"),list1=[],list2=[1,2,"Hoi!"],list3=[],list4=[key1="item1",key2=true])
+(this:is:a:test:(so:can1:it23:handle111:this:(ehhh=-1238,i="dont'tknow",canyoudothis="Hello\nHi\"Quote\"()\\n"),test:wow=true,does=true,it=1,work="hopefully?"),double=1.8492848184839256E7)

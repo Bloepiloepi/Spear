@@ -43,11 +43,8 @@ public class SPLexer {
 			next();
 		}
 		
-		if (currentChar != null && currentChar == '.') {
-			result.append(currentChar);
-			next();
-			
-			while (currentChar != null && Character.isDigit(currentChar)) {
+		if (currentChar != null && (currentChar == '.' || Character.isDigit(currentChar) || Character.isAlphabetic(currentChar) || currentChar == '-' || currentChar == '+')) {
+			while (currentChar != null && (currentChar == '.' || Character.isDigit(currentChar) || Character.isAlphabetic(currentChar) || currentChar == '-' || currentChar == '+')) {
 				result.append(currentChar);
 				next();
 			}
