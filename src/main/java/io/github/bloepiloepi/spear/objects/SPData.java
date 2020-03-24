@@ -137,6 +137,38 @@ public class SPData extends SPObject {
 	}
 	
 	/**
+	 * Gives a list of the subnodes of a path you give. Returns null if the path does not exist.
+	 *
+	 * @param path The path to the node to get the list from
+	 * @return     The list of subnodes if the node exists, else null
+	 */
+	public ArrayList<String> listNodes(String path) {
+		SPPath spPath = new SPPath(path);
+		
+		ArrayList<String> nodes = new ArrayList<>();
+		if (spPath.isLastNode()) {
+			for (SPNode node : separatedNodes) {
+				nodes.add(node.getName());
+			}
+			for (SPAssignment assignment : separatedAssignments) {
+				nodes.add(assignment.getName());
+			}
+			
+			return nodes;
+		} else {
+			SPNode node = getNode(spPath.getCurrentNode());
+			if (node != null) {
+				spPath.removeCurrentNode();
+				nodes.addAll(node.listNodes(spPath));
+				
+				return nodes;
+			} else {
+				return null;
+			}
+		}
+	}
+	
+	/**
 	 * Set an Integer in the file.
 	 *
 	 * @param path  The path to the new Integer

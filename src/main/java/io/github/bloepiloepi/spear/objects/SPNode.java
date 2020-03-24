@@ -133,6 +133,30 @@ public class SPNode extends SPNodeValue {
 		return checkUnused();
 	}
 	
+	public ArrayList<String> listNodes(SPPath path) {
+		ArrayList<String> nodes = new ArrayList<>();
+		if (path.isLastNode()) {
+			for (SPNode node : separatedNodes) {
+				nodes.add(node.getName());
+			}
+			for (SPAssignment assignment : separatedAssignments) {
+				nodes.add(assignment.getName());
+			}
+			
+			return nodes;
+		} else {
+			SPNode node = getNode(path.getCurrentNode());
+			if (node != null) {
+				path.removeCurrentNode();
+				nodes.addAll(node.listNodes(path));
+				
+				return nodes;
+			} else {
+				return null;
+			}
+		}
+	}
+	
 	private ArrayList<SPValue> formatList(ArrayList<Object> value) {
 		ArrayList<SPValue> values = new ArrayList<>();
 		for (Object object : value) {
