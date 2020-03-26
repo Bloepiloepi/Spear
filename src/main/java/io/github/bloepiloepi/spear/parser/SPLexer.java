@@ -57,7 +57,7 @@ public class SPLexer {
 	
 	private SPToken identifier() {
 		StringBuilder result = new StringBuilder();
-		while (currentChar != null && (Character.isAlphabetic(currentChar) || Character.isDigit(currentChar) || currentChar == '_')) {
+		while (currentChar != null && (Character.isAlphabetic(currentChar) || Character.isDigit(currentChar) || currentChar == '_' || currentChar == '-' || currentChar == '+')) {
 			result.append(currentChar);
 			next();
 		}
@@ -98,17 +98,14 @@ public class SPLexer {
 			}
 			
 			if (Character.isDigit(currentChar) || currentChar == '-') {
-				System.out.println("New token was number");
 				return number();
 			}
 			
 			if (Character.isAlphabetic(currentChar)) {
-				System.out.println("New token was identifier");
 				return identifier();
 			}
 			
 			if (currentChar == '"') {
-				System.out.println("New token was string");
 				return string();
 			}
 			
@@ -117,7 +114,6 @@ public class SPLexer {
 			if (tokenType != null) {
 				SPToken token = new SPToken(tokenType, currentChar.toString());
 				next();
-				System.out.println("New token was " + tokenType.toString());
 				return token;
 			} else {
 				throw new InvalidCharacterException(currentChar);

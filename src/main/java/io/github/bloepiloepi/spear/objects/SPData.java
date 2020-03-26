@@ -258,11 +258,20 @@ public class SPData extends SPObject {
 		return values;
 	}
 	
+	private void checkIdentifier(String id) {
+		for (char character : id.toCharArray()) {
+			if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '-' || character == '+')) {
+				throw new InvalidPathException();
+			}
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	private ArrayList<SPAssignment> formatList(HashMap<Object, Object> value) {
 		ArrayList<SPAssignment> assignments = new ArrayList<>();
 		value.forEach((k, v) -> {
 			if (k instanceof String) {
+				checkIdentifier((String) k);
 				if (v instanceof Integer || v instanceof Double || v instanceof String || v instanceof Boolean) {
 					assignments.add(new SPAssignment((String) k, new SPValue(v)));
 				} else if (v instanceof ArrayList) {
