@@ -278,30 +278,36 @@ public class SPData extends SPObject {
 		return assignments;
 	}
 	
-	@SuppressWarnings({"unchecked", "rawtypes"})
 	private Object get(String path) {
 		SPPath spPath = new SPPath(path);
 		SPValue spValue = get(spPath);
 		
 		if (spValue == null) return null;
-		Object value = spValue.getValue();
 		
-		if (value instanceof ArrayList) {
+		return parseValue(spValue);
+	}
+	
+	@SuppressWarnings({"unchecked", "rawtypes"})
+	private Object parseValue(SPValue value1) {
+		Object value = value1.getValue();
+		if (value instanceof Integer || value instanceof Double || value instanceof String || value instanceof Boolean) {
+			return value;
+		} else if (value instanceof ArrayList) {
 			if (((ArrayList) value).isEmpty()) {
-				return new ArrayList<>();
+				return value;
 			} else if (((ArrayList) value).get(0) instanceof SPAssignment) {
 				HashMap<String, Object> list = new HashMap<>();
 				
 				for (SPAssignment assignment : (ArrayList<SPAssignment>) value) {
-					list.put(assignment.getName(), assignment.getValue().getValue());
+					list.put(assignment.getName(), parseValue(assignment.getValue()));
 				}
 				
 				return list;
 			} else if (((ArrayList) value).get(0) instanceof SPValue) {
 				ArrayList<Object> list = new ArrayList<>();
 				
-				for (SPValue value1 : (ArrayList<SPValue>) value) {
-					list.add(value1.getValue());
+				for (SPValue value2 : (ArrayList<SPValue>) value) {
+					list.add(parseValue(value2));
 				}
 				
 				return list;
@@ -309,7 +315,7 @@ public class SPData extends SPObject {
 				throw new InvalidListTypeException();
 			}
 		} else {
-			return value;
+			throw new InvalidListTypeException();
 		}
 	}
 	
