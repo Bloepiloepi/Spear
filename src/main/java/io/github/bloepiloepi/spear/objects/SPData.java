@@ -453,6 +453,15 @@ public class SPData extends SPObject {
 	}
 	
 	/**
+	 * Returns the contents of the Spear file how it would be saved in a file.
+	 *
+	 * @return The contents of the Spear file.
+	 */
+	public String getRaw() {
+		return build();
+	}
+	
+	/**
 	 * Reads a file, parses it and loads it into the cache.
 	 *
 	 * @param file                   The File to read
