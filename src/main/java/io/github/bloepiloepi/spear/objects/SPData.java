@@ -410,11 +410,13 @@ public class SPData extends SPObject {
 	 * @param path The path to the List
 	 * @return     The value of the List as a HashMap if it does exist, else null.
 	 */
-	@SuppressWarnings("unchecked")
+	@SuppressWarnings({"unchecked", "rawtypes"})
 	public HashMap<String, Object> getKeyBasedList(String path) {
 		Object result = get(path);
 		if (result instanceof HashMap) {
 			return (HashMap<String, Object>) result;
+		} else if (result instanceof ArrayList && ((ArrayList) result).isEmpty()) {
+			return new HashMap<>();
 		} else {
 			return null;
 		}

@@ -76,10 +76,20 @@ public class SPLexer {
 		next();
 		while (currentChar != null && currentChar != '"') {
 			if (currentChar == '\\') {
-				result.append(currentChar);
-				next();
-				result.append(currentChar);
-				next();
+				if (text.charAt(pos + 1) == 'n') {
+					result.append("\n");
+					next();
+					next();
+				} else if (text.charAt(pos + 1) == '"') {
+					result.append("\"");
+					next();
+					next();
+				} else {
+					result.append(currentChar);
+					next();
+					result.append(currentChar);
+					next();
+				}
 			} else {
 				result.append(currentChar);
 				next();

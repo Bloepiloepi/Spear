@@ -51,7 +51,21 @@ public class SPValue extends SPObject {
 			result.append("]");
 			return result.toString();
 		} else if (value instanceof String) {
-			return "\"" + value.toString() + "\"";
+			StringBuilder stringBuilder = new StringBuilder();
+			stringBuilder.append("\"");
+			
+			for (char character : ((String) value).toCharArray()) {
+				if (character == '"') {
+					stringBuilder.append("\\\"");
+				} else if (character == '\n') {
+					stringBuilder.append("\\n");
+				} else {
+					stringBuilder.append(character);
+				}
+			}
+			
+			stringBuilder.append("\"");
+			return stringBuilder.toString();
 		} else {
 			return value.toString();
 		}
