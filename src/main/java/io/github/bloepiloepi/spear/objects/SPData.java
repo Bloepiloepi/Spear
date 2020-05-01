@@ -259,10 +259,14 @@ public class SPData extends SPObject {
 	}
 	
 	private void checkIdentifier(String id) {
-		for (char character : id.toCharArray()) {
-			if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '-' || character == '+')) {
-				throw new InvalidPathException();
+		if (!Character.isDigit(id.toCharArray()[0]) && !(id.toCharArray()[0] == '+') && !(id.toCharArray()[0] == '-') && !Character.isWhitespace(id.toCharArray()[0]) && !(id.toCharArray()[0] == '"')) {
+			for (char character : id.toCharArray()) {
+				if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '-' || character == '+')) {
+					throw new InvalidPathException();
+				}
 			}
+		} else {
+			throw new FirstCharacterOfIdentifierException();
 		}
 	}
 	

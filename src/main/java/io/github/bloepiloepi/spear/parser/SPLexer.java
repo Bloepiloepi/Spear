@@ -147,7 +147,7 @@ public class SPLexer {
 				continue;
 			}
 			
-			if (Character.isDigit(currentChar)) {
+			if (Character.isDigit(currentChar) || currentChar == '-') {
 				SPToken token = number();
 				peekRestore(posBefore);
 				return token;

@@ -1,5 +1,6 @@
 package io.github.bloepiloepi.spear.validation;
 
+import io.github.bloepiloepi.spear.exceptions.FirstCharacterOfIdentifierException;
 import io.github.bloepiloepi.spear.exceptions.InvalidPathException;
 
 import java.util.ArrayList;
@@ -22,10 +23,14 @@ public class SPPath {
 	}
 	
 	private void checkPath() throws InvalidPathException {
-		for (char character : path.toCharArray()) {
-			if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '.')) {
-				throw new InvalidPathException();
+		if (!Character.isDigit(path.toCharArray()[0]) && !(path.toCharArray()[0] == '+') && !(path.toCharArray()[0] == '-') && !Character.isWhitespace(path.toCharArray()[0]) && !(path.toCharArray()[0] == '"')) {
+			for (char character : path.toCharArray()) {
+				if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '.')) {
+					throw new InvalidPathException();
+				}
 			}
+		} else {
+			throw new FirstCharacterOfIdentifierException();
 		}
 	}
 	
