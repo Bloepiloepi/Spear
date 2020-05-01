@@ -45,8 +45,6 @@ Possible values are:
 
 If the value is another node, it is assigned by a colon, if it is any other, it is assigned by an equal sign.
 In Spear, that is called an assignment.
-## Known bugs
-There is only one known bug: Spear is not able to parse empty key based lists (this is because in Spear the format of lists and key based lists is the same, if there are no objects Spear does not see any key so parses it as a normal list). This will not be worked on, users need to add a dummy object if their key based list is empty.
 ## Using the Spear API
 You can load a Spear file (.sp file) using the SPData class (which represents a Spear file). You can also load from a string.
 ```java
