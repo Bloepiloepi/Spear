@@ -44,7 +44,7 @@ public class SPLexer {
 		}
 		
 		if (currentChar != null && (currentChar == '.' || Character.isDigit(currentChar) || Character.isAlphabetic(currentChar) || currentChar == '-' || currentChar == '+')) {
-			while (currentChar != null && (currentChar == '.' || Character.isDigit(currentChar) || Character.isAlphabetic(currentChar) || currentChar == '-' || currentChar == '+')) {
+			while (currentChar != null && (currentChar == '.' || Character.isDigit(currentChar) || isDoubleChar(currentChar) || currentChar == '-' || currentChar == '+')) {
 				result.append(currentChar);
 				next();
 			}
@@ -53,6 +53,10 @@ public class SPLexer {
 		} else {
 			return new SPToken(SPTokenType.INTEGER, result.toString());
 		}
+	}
+	
+	private boolean isDoubleChar(char character) {
+		return (character == 'I' || character == 'n' || character == 'f' || character == 'i' || character == 't' || character == 'y' || character == 'x' || character == 'X' || character == 'e' || character == 'E' || character == 'F' || character == 'd' || character == 'D');
 	}
 	
 	private SPToken identifier() {
