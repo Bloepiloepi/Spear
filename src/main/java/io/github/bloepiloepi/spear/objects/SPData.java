@@ -478,7 +478,9 @@ public class SPData extends SPObject {
 		if (extension.equals("sp")) {
 			Scanner scanner = new Scanner(file);
 			StringBuilder contents = new StringBuilder();
-			scanner.forEachRemaining(contents::append);
+			while (scanner.hasNextLine()) {
+				contents.append(scanner.nextLine());
+			}
 			return loadFromString(contents.toString());
 		} else {
 			throw new IncorrectFileTypeException(file.getName());

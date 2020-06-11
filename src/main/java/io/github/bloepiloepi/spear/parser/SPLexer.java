@@ -9,7 +9,7 @@ public class SPLexer {
 	
 	private int pos = 0;
 	private Character currentChar;
-	private String text;
+	private final String text;
 	
 	SPLexer(String text) {
 		this.text = text;
