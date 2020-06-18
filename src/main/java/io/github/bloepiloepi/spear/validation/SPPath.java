@@ -11,8 +11,8 @@ import java.util.Arrays;
  */
 public class SPPath {
 	
-	private String path;
-	private ArrayList<String> nodes;
+	private final String path;
+	private final ArrayList<String> nodes;
 	
 	public SPPath(String path) throws InvalidPathException {
 		this.path = path;
@@ -25,8 +25,8 @@ public class SPPath {
 	private void checkPath() throws InvalidPathException {
 		if (!Character.isDigit(path.toCharArray()[0]) && !(path.toCharArray()[0] == '+') && !(path.toCharArray()[0] == '-') && !Character.isWhitespace(path.toCharArray()[0]) && !(path.toCharArray()[0] == '"')) {
 			for (char character : path.toCharArray()) {
-				if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '.')) {
-					throw new InvalidPathException();
+				if (!(Character.isAlphabetic(character) || Character.isDigit(character) || character == '_' || character == '.' || character == '&' || character == '%' || character == '^' || character == '@' || character == '#' || character == '-')) {
+					throw new InvalidPathException(character);
 				}
 			}
 		} else {

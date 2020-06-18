@@ -5,7 +5,7 @@ package io.github.bloepiloepi.spear.exceptions;
  */
 public class InvalidPathException extends RuntimeException {
 	
-	public InvalidPathException() {
-		super("Spear identifiers can only have letters, numbers, underscores, stripes and +'s.");
+	public InvalidPathException(char wrongCharacter) {
+		super("Spear identifiers can not contain the following character: " + wrongCharacter);
 	}
 }
