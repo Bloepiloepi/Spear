@@ -61,7 +61,7 @@ public class SPLexer {
 	
 	private SPToken identifier() {
 		StringBuilder result = new StringBuilder();
-		while (currentChar != null && (Character.isAlphabetic(currentChar) || Character.isDigit(currentChar) || currentChar == '_' || currentChar == '-' || currentChar == '+')) {
+		while (currentChar != null && (Character.isAlphabetic(currentChar) || Character.isDigit(currentChar) || currentChar == '_' || currentChar == '-' || currentChar == '+'  || currentChar == '&' || currentChar == '%' || currentChar == '^' || currentChar == '@' || currentChar == '#')) {
 			result.append(currentChar);
 			next();
 		}

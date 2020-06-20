@@ -4,7 +4,7 @@
 
     <groupId>io.github.bloepiloepi</groupId>
     <artifactId>Spear</artifactId>
-    <version>1.1.9</version>
+    <version>1.2.0</version>
 
     <name>Spear</name>
     <description>Spear is a data saving format, written in Java.</description>
