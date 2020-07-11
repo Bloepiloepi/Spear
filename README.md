@@ -38,7 +38,7 @@ Only if a node has multiple subnodes, they are separated by commas and placed in
 Possible values are:
 * Another node (subnode)
 * Integer
-* Double or float (converted to double when retrieving)
+* Double
 * String
 * Boolean
 * List (normally converted to an ArrayList when retrieving, but if it is key based converted to a HashMap)
