@@ -62,12 +62,12 @@ It throws an `IOException` if the file already existed as a directory or if ther
 
 Setting values of the file:
 ```java
-data.setInteger(path, integer);
-data.setDouble(path, double);
-data.setString(path, string);
-data.setBoolean(path, boolean);
-data.setList(path, arraylist);
-data.setList(path, hashmap);
+data.setInteger(path, 1);
+data.setDouble(path, 5.6);
+data.setString(path, "Hello");
+data.setBoolean(path, false);
+data.setList(path, new ArrayList<>());
+data.setList(path, new HashMap<>());
 ```
 All these methods throw an InvalidPathException if the path contains characters that aren't supported.
 You need to watch out when putting a HashMap into a Spear file, because Spear lists, if they are key based, use identifiers and not values as key.
